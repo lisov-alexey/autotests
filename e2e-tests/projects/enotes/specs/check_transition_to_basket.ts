@@ -40,6 +40,7 @@ describe('Checking the transition to basket', () => {
         await BasketPage.checkingOpenedUrl(urls.basketPageEnotes);
     });
 
+
     it('Go to basket with 1 promotional product, case-3', async () => {
         await CatalogPage.addProductsById(onePromotionalProducts, 1, urls.addProductBasket);
         await BasketPage.basketCountItems(1).waitUntilElementIsVisible()
