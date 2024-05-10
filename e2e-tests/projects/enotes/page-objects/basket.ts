@@ -27,7 +27,9 @@ class BasketPage{
         return new Block($(`//*[contains(@class, "basket_price")]/self::*[contains(text(), '${price}')]`), `Basket price includes ${price}`);
     }
 
-    async emptyBasket(buttonName: string, countItem: number): Promise<void> {
+    async emptyBasket(buttonName: string, countItem: number, url: string): Promise<void> {
+        await browser.url(url);
+        await this.basketContainerButton.waitUntilElementIsVisible();
         if (!await this.basketCountItems(countItem).getLocator.isDisplayed()) {
             await this.basketContainerButton.click();
             await this.buttonByName(buttonName).waitUntilElementIsVisible();
